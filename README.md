@@ -16,7 +16,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
     @State var email: String = ""
     var body: some View {
         VStack {
-            VTextField("Email", text:$viewModel.email)
+            VTextField("Email", text:$email)
         }
         .padding()
     }
@@ -27,7 +27,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
 ```
     VTextField("Email",
-                text: $viewModel.email,
+                text: $email,
                 header: "Enter Email",
                 footer: "Invalid Email")
 ```
@@ -38,7 +38,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
 ```
     VTextField("Email",
-                text: $viewModel.email,
+                text: $email,
                 icon: (Image(systemName: "envelope.fill"), .trailing, nil))
 ```
 
@@ -59,7 +59,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
         VStack {
             VTextField(uiModel: textFieldUIModel,
                        "Email",
-                       text: $viewModel.email,
+                       text: $email,
                        header: "Login",
                        icon: (Image(systemName: "envelope.fill"), .trailing, nil),
                        footer: "Your are not registered with us")
