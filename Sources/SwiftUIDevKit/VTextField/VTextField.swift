@@ -67,27 +67,7 @@ public struct VTextField: View {
             .padding(icon?.1 == .leading ? .leading : .trailing,(icon == nil ? 0 : uiModel.iconWidth))
             .padding(.trailing, secureEntry ? uiModel.iconWidth : 0)
             .overlay(
-                ///Image
                 ZStack{
-                    if let image = icon?.0{
-                        HStack{
-                            icon?.1 == .trailing ? Spacer() : nil
-                            Button{
-                                if let action = icon?.2{
-                                    action()
-                                }
-                            }label: {
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: uiModel.iconWidth, height: uiModel.iconHeight)
-                                    .padding(.horizontal, 8)
-                                    .foregroundColor(isFocused ? uiModel.selectedColor : uiModel.unselectedColor)
-                            }
-                            .allowsHitTesting(icon?.2 != nil)
-                            icon?.1 == .leading ? Spacer() : nil
-                        }
-                    }
                     ///SecureField
                     if secureEntry{
                         HStack{
@@ -101,6 +81,27 @@ public struct VTextField: View {
                                     .frame(width: uiModel.iconWidth, height: uiModel.iconHeight)
                                     .padding(.horizontal, 8)
                                     .foregroundColor(isFocused ? uiModel.selectedColor : uiModel.unselectedColor)
+                            }
+                        }
+                    }else{
+                        ///Set Icon
+                        if let image = icon?.0{
+                            HStack{
+                                icon?.1 == .trailing ? Spacer() : nil
+                                Button{
+                                    if let action = icon?.2{
+                                        action()
+                                    }
+                                }label: {
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: uiModel.iconWidth, height: uiModel.iconHeight)
+                                        .padding(.horizontal, 8)
+                                        .foregroundColor(isFocused ? uiModel.selectedColor : uiModel.unselectedColor)
+                                }
+                                .allowsHitTesting(icon?.2 != nil)
+                                icon?.1 == .leading ? Spacer() : nil
                             }
                         }
                     }
