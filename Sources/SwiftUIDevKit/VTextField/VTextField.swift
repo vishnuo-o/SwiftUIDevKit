@@ -65,6 +65,7 @@ public struct VTextField: View {
                     .cornerRadius(uiModel.cornerRadius/2)
                     .offset(x: 8, y: isFocused || !text.isEmpty ? -uiModel.height/2 : 0), alignment: .leading)
             .padding(icon?.1 == .leading ? .leading : .trailing,(icon == nil ? 0 : uiModel.iconWidth))
+            .padding(.trailing, secureEntry ? uiModel.iconWidth : 0)
             .overlay(
                 ///Image
                 ZStack{
