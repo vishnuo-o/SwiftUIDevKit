@@ -6,6 +6,8 @@ Go to Xcode,
 
 File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
+***
+
 ### VTextField
 ![VTextField](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/d5e18e88-efb6-46b7-8590-7017f6368593)
 
