@@ -60,10 +60,11 @@ public struct VTextField: View {
                             .foregroundColor(.red)
                     }
                 }
-                    .font(isFocused || !text.isEmpty ? uiModel.floatFont : uiModel.placeholderFont)
-                    .background(isFocused || !text.isEmpty ? uiModel.floatBackgroundColor : .clear)
-                    .cornerRadius(uiModel.cornerRadius/2)
-                    .offset(x: 8, y: isFocused || !text.isEmpty ? -uiModel.height/2 : 0), alignment: .leading)
+                .font(isFocused || !text.isEmpty ? uiModel.floatFont : uiModel.placeholderFont)
+                .background(isFocused || !text.isEmpty ? uiModel.floatBackgroundColor : .clear)
+                .cornerRadius(uiModel.cornerRadius/2)
+                .offset(x: 8, y: isFocused || !text.isEmpty ? -uiModel.height/2 : 0), alignment: .leading
+            )
             .padding(icon?.1 == .leading ? .leading : .trailing,(icon == nil ? 0 : uiModel.iconWidth))
             .padding(.trailing, secureEntry ? uiModel.iconWidth : 0)
             .overlay(
