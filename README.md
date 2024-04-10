@@ -1,14 +1,15 @@
 # SwiftUIDevKit
 A Quick Development Kit for iOS Applications. 
 
-Step 1: Copy Repository URL
-Step 2: Go to Xcode, File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
+## Installation
+Go to Xcode, 
 
-***
-## VTextField
+File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
+
+### VTextField
 ![VTextField](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/d5e18e88-efb6-46b7-8590-7017f6368593)
 
-### Usage:
+#### Usage:
 ```
     @State var email: String = ""
     var body: some View {
