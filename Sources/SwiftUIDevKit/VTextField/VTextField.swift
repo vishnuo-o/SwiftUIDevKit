@@ -44,8 +44,6 @@ public struct VTextField: View {
         self.footer = footer
     }
     
-
-    
     public var body: some View {
         TextFieldView()
             .autocorrectionDisabled()
@@ -128,7 +126,6 @@ public struct VTextField: View {
     ///View returns TextField
     private func TextFieldView() -> AnyView{
         if secureEntry && !isVisible{
-            print("101")
             return AnyView(SecureField("", text: $text))
         }else{
             return AnyView(TextField("", text: $text, onEditingChanged: { editing in
