@@ -42,7 +42,17 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
                 icon: (Image(systemName: "envelope.fill"), .trailing, nil))
 ```
 
-#### 3. To Customise the textfield style.
+
+#### 3. To set mandatory.
+
+![VTextField_Mandatory](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/f4434308-87f4-4784-b4d4-d2f00544f74a)
+
+
+```
+    VTextField("Email", text: $email, mandatory: true)
+```
+
+#### 4. To Customise the textfield style.
 ![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
 
 ```
@@ -68,11 +78,3 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
     }
 ```
 
-#### 4. To set mandatory.
-
-![VTextField_Mandatory](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/f4434308-87f4-4784-b4d4-d2f00544f74a)
-
-
-```
-    VTextField("Email", text: $email, mandatory: true)
-```
