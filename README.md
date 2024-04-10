@@ -35,7 +35,7 @@ You can set header/footer to textfield, set to nil if you want to remove.
 ```
 
 
-#### 2. To set icon to textfield.
+#### 2. To create icon on textfield.
 ![VTextField_Icon](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/65ecde42-da1a-4782-b501-a2c7525c8172)
 
 Set Image, Alignment (whether leading/trailing, action. if there is no need of action pass nil.
@@ -47,7 +47,18 @@ Set Image, Alignment (whether leading/trailing, action. if there is no need of a
 ```
 
 
-#### 3. To set mandatory.
+#### 3. To make SecureEntry over textField.
+
+![VTextField_SecureEntry](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/317d57f6-c681-434c-9d44-978a1c11d8d9)
+
+
+Set the 'secureEntry' param true. By Default set to false.
+
+```
+    VTextField("Password", text: $password, secureEntry: true)
+```
+
+#### 4. To make mandatory textField.
 
 ![VTextField_Mandatory](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/f4434308-87f4-4784-b4d4-d2f00544f74a)
 
@@ -57,7 +68,7 @@ Set the 'mandatory' param true. By Default set to false.
     VTextField("Email", text: $email, mandatory: true)
 ```
 
-#### 4. To Customise the textfield style.
+#### 5. To Customise the textfield style.
 ![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
 
 Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
