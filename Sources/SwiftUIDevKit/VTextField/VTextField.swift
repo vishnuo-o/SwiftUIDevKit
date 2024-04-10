@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct VTextField: View {
+public struct VTextField: View {
     
     var title: String
     
