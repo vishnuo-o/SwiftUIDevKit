@@ -40,7 +40,7 @@ public struct VTextField: View {
         self.footer = footer
     }
     
-    var body: some View {
+    public var body: some View {
         TextField("", text: $text, onEditingChanged: { editing in
             self.isFocused = editing
         })
