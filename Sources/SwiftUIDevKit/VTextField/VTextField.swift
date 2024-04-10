@@ -21,6 +21,8 @@ public struct VTextField: View {
     private var header: String?
     private var icon: (Image, Alignment, (() -> Void)?)?
     private var footer: String?
+    private var maxCount: Int?
+    private var format: Format
     
     public init(
         uiModel: VTextFieldUIModel = VTextFieldUIModel(),
@@ -30,7 +32,9 @@ public struct VTextField: View {
         secureEntry: Bool? = nil,
         header: String? = nil,
         icon: (Image, Alignment, (() -> Void)?)? = nil,
-        footer: String? = nil
+        footer: String? = nil,
+        maxCount: Int? = nil,
+        format: Format = .none
     ){
         self.uiModel = uiModel
         self.title = title
@@ -40,6 +44,8 @@ public struct VTextField: View {
         self.header = header
         self.icon = icon
         self.footer = footer
+        self.maxCount = maxCount
+        self.format = format
     }
     
     public var body: some View {
@@ -131,8 +137,83 @@ public struct VTextField: View {
         }else{
             return AnyView(TextField("", text: $text, onEditingChanged: { editing in
                 self.isFocused = editing
-            }))
+            })
+                .onChange(of: text){ newText in
+                    if let maxCount{
+                        let s = String(newText.prefix(maxCount))
+                        if text != s && (maxCount != 0) {
+                            text = s
+                        }
+                    }else{
+                        switch format{
+                        case .phone_US:
+                            text = phoneFormatter(newText, "US")
+                        case .phone_IND:
+                            text = phoneFormatter(newText, "IND")
+                        case .zipcode_US:
+                            text = zipCodeFormatter(newText)
+                        case .ein:
+                            text = einFormatter(newText)
+                        case .ssn:
+                            text = ssnFormatter(newText)
+                        case .currency_Dollar:
+                            text = currencyFormatter(newText)
+                        case .none:
+                            text = newText
+                        }
+                    }
+                })
         }
+    }
+    
+    // Formatter
+    func phoneFormatter(_ phone: String, _ Country: String) -> String {
+        var mask = ""
+        switch Country{
+        case "US":
+            mask = "(XXX) XXX-XXXX"
+        case "IND":
+            mask = "XXXX-XXXXXXX"
+        default:
+            break
+        }
+        return maskInput(mask: mask, input: phone)
+    }
+    
+    func zipCodeFormatter(_ zipcode: String) -> String {
+        return maskInput(mask: "XXXXX-XXXX", input: zipcode)
+    }
+    
+    func einFormatter(_ ein: String) -> String {
+        return maskInput(mask: "XX-XXXXXXX", input: ein)
+    }
+    
+    func ssnFormatter(_ ssn: String) -> String {
+        return maskInput(mask: "XXX-XX-XXXX", input: ssn)
+    }
+    
+    func currencyFormatter(_ amount: String) -> String {
+        var mask = "$"
+        for _ in (0..<amount.count) {
+            mask.append("X")
+        }
+        return maskInput(mask: mask, input: amount)
+    }
+    
+    // Mask method
+    func maskInput(mask: String, input: String) -> String {
+        let cleanInput = input.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        var result = ""
+        var index = cleanInput.startIndex
+        for ch in mask where index < cleanInput.endIndex {
+            if ch == "X" {
+                result.append(cleanInput[index])
+                index = cleanInput.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        return result
     }
 }
 
@@ -140,6 +221,7 @@ public struct VTextField: View {
 struct CustomTextField_Previews: PreviewProvider {
     @State static var email = "abc"
     @State static var pass = "123"
+    @State static var phone = ""
     static var previews: some View {
         ///Customize here
         let uiModel = VTextFieldUIModel(selectedColor: Color(red: 66/255, green: 133/255, blue: 244/255), headerFont: .title2)
@@ -155,8 +237,18 @@ struct CustomTextField_Previews: PreviewProvider {
                        footer: ""
             )
             VTextField("Password", text: $pass, secureEntry: true)
+            VTextField("Phone", text: $phone, maxCount: 1)
         }
         .padding()
     }
 }
 
+public enum Format{
+    case none
+    case phone_US
+    case phone_IND
+    case zipcode_US
+    case ein
+    case ssn
+    case currency_Dollar
+}
