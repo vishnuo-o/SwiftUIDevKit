@@ -23,7 +23,7 @@ struct VTextField: View {
     private var icon: (Image, Alignment, (() -> Void)?)?
     private var footer: String?
     
-    init(uiModel: VTextFieldUIModel = VTextFieldUIModel(),
+    public init(uiModel: VTextFieldUIModel = VTextFieldUIModel(),
          _ title: String,
          text: Binding<String>,
          mandatory: Bool? = nil,
