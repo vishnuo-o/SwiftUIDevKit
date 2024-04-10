@@ -8,9 +8,7 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public struct VTextField: View {
-    
     var title: String
-    
     @Binding private var text: String
     @State private var isFocused: Bool = false
     @State private var isVisible: Bool = false
