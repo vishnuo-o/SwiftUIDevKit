@@ -67,3 +67,12 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
         .padding()
     }
 ```
+
+#### 4. To set mandatory.
+
+![VTextField_Mandatory](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/f4434308-87f4-4784-b4d4-d2f00544f74a)
+
+
+```
+    VTextField("Email", text: $email, mandatory: true)
+```
