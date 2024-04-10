@@ -25,6 +25,8 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 #### 1. To set header/footer to textfield.
 ![VTextField_Header/Footer](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/947d22e8-b7c7-4a63-b903-2b0e3ed456fc)
 
+You can set header/footer to textfield, set to nil if you want to remove.
+
 ```
     VTextField("Email",
                 text: $email,
