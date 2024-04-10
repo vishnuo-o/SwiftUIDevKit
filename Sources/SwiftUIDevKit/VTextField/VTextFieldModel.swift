@@ -35,7 +35,7 @@ public struct VTextFieldUIModel {
     var footerForgroundColor: Color
     var footerSpacing: CGFloat
     
-    init(floatFont: Font = .custom("Avenir Medium", size: 12),
+    public init(floatFont: Font = .custom("Avenir Medium", size: 12),
          placeholderFont: Font = .custom("Avenir", size: 16),
          font: Font = .custom("Avenir", size: 16),
          height: CGFloat = 50,
