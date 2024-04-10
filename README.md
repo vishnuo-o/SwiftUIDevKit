@@ -36,6 +36,8 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 #### 2. To set icon to textfield.
 ![VTextField_Icon](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/65ecde42-da1a-4782-b501-a2c7525c8172)
 
+Set Image, Alignment (whether leading/trailing, action. if there is no need of action pass nil.
+
 ```
     VTextField("Email",
                 text: $email,
@@ -47,6 +49,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
 ![VTextField_Mandatory](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/f4434308-87f4-4784-b4d4-d2f00544f74a)
 
+Set the 'mandatory' param true. By Default set to false.
 
 ```
     VTextField("Email", text: $email, mandatory: true)
@@ -54,6 +57,8 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
 #### 4. To Customise the textfield style.
 ![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
+
+Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
 
 ```
     @State var email: String = ""
