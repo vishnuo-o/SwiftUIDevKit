@@ -49,7 +49,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
     @State var email: String = ""
     let textFieldUIModel = VTextFieldUIModel(font: .custom("SF Mono", size: 16),
                                              backgroundColor: .green.opacity(0.30),
-                                             floatBackgroundColor: .green,
+                                             floatBackgroundColor: .green.opacity(0.30),
                                              selectedColor: .green,
                                              borderWidth: 0,
                                              headerFont: .title,
