@@ -61,7 +61,7 @@ You can set header/footer to textfield, set to nil if you want to remove.
 
 ![VTextField_Mandatory](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/f4434308-87f4-4784-b4d4-d2f00544f74a)
 
-Set the 'mandatory' param true. By Default set to false.
+Set the 'mandatory' param true. By default set to false.
 
 ```
     VTextField("Email", text: $email, mandatory: true)
@@ -72,7 +72,7 @@ Set the 'mandatory' param true. By Default set to false.
 ![VTextField_Formatting](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/b0c8dde4-d0ca-42f0-8a07-21a822e2d5fb)
 
 
-Set the 'format' param to masking string.
+Set the 'format' param to masking string. Use X to create mask.
 
 ```
     VTextField("Phone", text: $phone, format: "(XXX) XXX-XXXX")
@@ -88,7 +88,7 @@ Set the 'maxCount' param to required maximum count.
     VTextField("Username", text: $username, maxCount: 6)
 ```
 
-## To Customise the textfield style.
+## To Customise the textfield for any style.
 ![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
 
 Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
