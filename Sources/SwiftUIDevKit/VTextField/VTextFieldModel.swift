@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - VTextFieldUIModel for Customization
+//MARK: - VTextFieldUIModel for Customization
 public struct VTextFieldUIModel {
     var floatFont: Font
     var placeholderFont: Font
@@ -42,7 +42,7 @@ public struct VTextFieldUIModel {
          foregroundColor: Color = .primary,
          backgroundColor: Color = Color(.systemBackground),
          floatBackgroundColor: Color = Color(.systemBackground),
-         selectedColor: Color = .blue.opacity(0.75),
+         selectedColor: Color = Color(red: 60, green: 120, blue: 240),
          unselectedColor: Color = .black.opacity(0.5),
          cornerRadius: CGFloat = 4.0,
          borderWidth: CGFloat = 1.75,
