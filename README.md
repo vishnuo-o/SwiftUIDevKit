@@ -79,6 +79,16 @@ Set the 'format' param to masking string.
     VTextField("Phone", text: $phone, format: "(XXX) XXX-XXXX")
 ```
 
+#### 6. To limit the input.
+
+![VTextField_Limit](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/91ec2e04-7209-43af-be94-ef9cc9ca4e29)
+
+Set the 'maxCount' param to required maximum count.
+
+```
+    VTextField("Username", text: $username, maxCount: 6)
+```
+
 ## To Customise the textfield style.
 ![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
 
