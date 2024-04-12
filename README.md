@@ -22,20 +22,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
     }
 ```
 
-#### 1. To set header/footer to textfield.
-![VTextField_Header/Footer](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/947d22e8-b7c7-4a63-b903-2b0e3ed456fc)
-
-You can set header/footer to textfield, set to nil if you want to remove.
-
-```
-    VTextField("Email",
-                text: $email,
-                header: "Enter Email",
-                footer: "Invalid Email")
-```
-
-
-#### 2. To create icon on textfield.
+#### 1. To create icon on textfield.
 ![VTextField_Icon](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/65ecde42-da1a-4782-b501-a2c7525c8172)
 
 Set Image, Alignment (whether leading/trailing, action. if there is no need of action pass nil.
@@ -47,7 +34,7 @@ Set Image, Alignment (whether leading/trailing, action. if there is no need of a
 ```
 
 
-#### 3. To make SecureEntry over textField.
+#### 2. To make SecureEntry over textField.
 
 ![VTextField_SecureEntry](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/317d57f6-c681-434c-9d44-978a1c11d8d9)
 
@@ -56,6 +43,18 @@ Set the 'secureEntry' param true. By Default set to false.
 
 ```
     VTextField("Password", text: $password, secureEntry: true)
+```
+
+#### 3. To set header/footer to textfield.
+![VTextField_Header/Footer](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/947d22e8-b7c7-4a63-b903-2b0e3ed456fc)
+
+You can set header/footer to textfield, set to nil if you want to remove.
+
+```
+    VTextField("Email",
+                text: $email,
+                header: "Enter Email",
+                footer: "Invalid Email")
 ```
 
 #### 4. To make mandatory textField.
