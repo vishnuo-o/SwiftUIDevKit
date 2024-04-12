@@ -68,7 +68,18 @@ Set the 'mandatory' param true. By Default set to false.
     VTextField("Email", text: $email, mandatory: true)
 ```
 
-#### 5. To Customise the textfield style.
+#### 5. To make text formatting.
+
+![VTextField_Formatting](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/b0c8dde4-d0ca-42f0-8a07-21a822e2d5fb)
+
+
+Set the 'format' param to masking string.
+
+```
+    VTextField("Phone", text: $phone, format: "(XXX) XXX-XXXX")
+```
+
+## To Customise the textfield style.
 ![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
 
 Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
