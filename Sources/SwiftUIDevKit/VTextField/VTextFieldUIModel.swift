@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//MARK: - VTextFieldUIModel for Customization
+//MARK: - UIModel for Customization
 public struct VTextFieldUIModel {
     var floatFont: Font
     var placeholderFont: Font
