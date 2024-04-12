@@ -1,13 +1,13 @@
 //
-//  File.swift
-//  
+//  VTextFieldUIModel.swift
 //
-//  Created by VISHNU S on 4/12/24.
+//
+//  Created by VISHNU on 4/12/24.
 //
 
 import SwiftUI
 
-///UIModel
+// MARK: - VTextFieldUIModel for Customization
 public struct VTextFieldUIModel {
     var floatFont: Font
     var placeholderFont: Font
