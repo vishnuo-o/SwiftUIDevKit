@@ -36,27 +36,27 @@ public struct VTextFieldUIModel {
     var footerSpacing: CGFloat
     
     public init(floatFont: Font = .custom("Avenir Medium", size: 12),
-         placeholderFont: Font = .custom("Avenir", size: 16),
-         font: Font = .custom("Avenir", size: 16),
-         height: CGFloat = 50,
-         foregroundColor: Color = .primary,
-         backgroundColor: Color = Color(.systemBackground),
-         floatBackgroundColor: Color = Color(.systemBackground),
-         selectedColor: Color = Color(red: 60, green: 120, blue: 240),
-         unselectedColor: Color = .black.opacity(0.5),
-         cornerRadius: CGFloat = 4.0,
-         borderWidth: CGFloat = 1.75,
-         //header
-         headerFont: Font = .custom("Avenir Medium", size: 14),
-         headerForgroundColor: Color = .gray,
-         headerSpacing: CGFloat = 12,
-         //icon
-         iconWidth: CGFloat = 25,
-         iconHeight: CGFloat = 25,
-         //footer
-         footerFont: Font = .custom("Avenir Medium", size: 14),
-         footerForgroundColor: Color = .red,
-         footerSpacing: CGFloat = 4
+                placeholderFont: Font = .custom("Avenir", size: 16),
+                font: Font = .custom("Avenir", size: 16),
+                height: CGFloat = 50,
+                foregroundColor: Color = .primary,
+                backgroundColor: Color = Color(.systemBackground),
+                floatBackgroundColor: Color = Color(.systemBackground),
+                selectedColor: Color = Color(60, 120, 240),
+                unselectedColor: Color = .black.opacity(0.5),
+                cornerRadius: CGFloat = 4.0,
+                borderWidth: CGFloat = 1.75,
+                //header
+                headerFont: Font = .custom("Avenir Medium", size: 14),
+                headerForgroundColor: Color = .gray,
+                headerSpacing: CGFloat = 12,
+                //icon
+                iconWidth: CGFloat = 25,
+                iconHeight: CGFloat = 25,
+                //footer
+                footerFont: Font = .custom("Avenir Medium", size: 14),
+                footerForgroundColor: Color = .red,
+                footerSpacing: CGFloat = 4
     ){
         
         self.floatFont = floatFont

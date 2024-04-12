@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - Color Init with RGBA
 extension Color {
-    init(
+    public init(
         _ red: CGFloat,
         _ green: CGFloat,
         _ blue: CGFloat,

@@ -13,7 +13,7 @@ func maskInput(mask: String, input: String) -> String {
     var result = ""
     var index = cleanInput.startIndex
     for ch in mask where index < cleanInput.endIndex {
-        if ch == "X" {
+        if ch == "X" || ch == "x"{
             result.append(cleanInput[index])
             index = cleanInput.index(after: index)
         } else {
