@@ -22,7 +22,7 @@ public struct VTextField: View {
     private var icon: (Image, Alignment, (() -> Void)?)?
     private var footer: String?
     private var maxCount: Int?
-    private var format: Format
+    private var format: String?
     
     public init(
         uiModel: VTextFieldUIModel = VTextFieldUIModel(),
@@ -34,7 +34,7 @@ public struct VTextField: View {
         icon: (Image, Alignment, (() -> Void)?)? = nil,
         footer: String? = nil,
         maxCount: Int? = nil,
-        format: Format = .none
+        format: String? = nil
     ){
         self.uiModel = uiModel
         self.title = title
@@ -144,63 +144,15 @@ public struct VTextField: View {
                         if text != s && (maxCount != 0) {
                             text = s
                         }
-                    }else{
-                        switch format{
-                        case .phone_US:
-                            text = phoneFormatter(newText, "US")
-                        case .phone_IND:
-                            text = phoneFormatter(newText, "IND")
-                        case .zipcode_US:
-                            text = zipCodeFormatter(newText)
-                        case .ein:
-                            text = einFormatter(newText)
-                        case .ssn:
-                            text = ssnFormatter(newText)
-                        case .currency_Dollar:
-                            text = currencyFormatter(newText)
-                        case .none:
-                            text = newText
+                        if let format{
+                            text = maskInput(mask: format, input: newText)
                         }
                     }
                 })
         }
     }
     
-    // Formatter
-    func phoneFormatter(_ phone: String, _ Country: String) -> String {
-        var mask = ""
-        switch Country{
-        case "US":
-            mask = "(XXX) XXX-XXXX"
-        case "IND":
-            mask = "XXXX-XXXXXXX"
-        default:
-            break
-        }
-        return maskInput(mask: mask, input: phone)
-    }
-    
-    func zipCodeFormatter(_ zipcode: String) -> String {
-        return maskInput(mask: "XXXXX-XXXX", input: zipcode)
-    }
-    
-    func einFormatter(_ ein: String) -> String {
-        return maskInput(mask: "XX-XXXXXXX", input: ein)
-    }
-    
-    func ssnFormatter(_ ssn: String) -> String {
-        return maskInput(mask: "XXX-XX-XXXX", input: ssn)
-    }
-    
-    func currencyFormatter(_ amount: String) -> String {
-        var mask = "$"
-        for _ in (0..<amount.count) {
-            mask.append("X")
-        }
-        return maskInput(mask: mask, input: amount)
-    }
-    
-    // Mask method
+    /// Masking method
     func maskInput(mask: String, input: String) -> String {
         let cleanInput = input.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
         var result = ""
@@ -237,18 +189,8 @@ struct CustomTextField_Previews: PreviewProvider {
                        footer: ""
             )
             VTextField("Password", text: $pass, secureEntry: true)
-            VTextField("Phone", text: $phone, maxCount: 1)
+            VTextField("Phone", text: $phone, maxCount: 1, format: "(XXX) XXX-XXXX")
         }
         .padding()
     }
-}
-
-public enum Format{
-    case none
-    case phone_US
-    case phone_IND
-    case zipcode_US
-    case ein
-    case ssn
-    case currency_Dollar
 }
