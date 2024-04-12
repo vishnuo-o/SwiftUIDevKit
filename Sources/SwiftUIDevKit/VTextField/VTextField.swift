@@ -1,11 +1,11 @@
 //
 //  File.swift
 //
-//  Created by STS649-VISHNU S on 4/10/24.
+//  Created by VISHNU S on 4/12/24.
 //
 
 import SwiftUI
-
+// MARK: - Custom TextField
 @available(iOS 13.0, *)
 public struct VTextField: View {
     var title: String
@@ -150,22 +150,6 @@ public struct VTextField: View {
                     }
                 })
         }
-    }
-    
-    /// Masking method
-    func maskInput(mask: String, input: String) -> String {
-        let cleanInput = input.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
-        var result = ""
-        var index = cleanInput.startIndex
-        for ch in mask where index < cleanInput.endIndex {
-            if ch == "X" {
-                result.append(cleanInput[index])
-                index = cleanInput.index(after: index)
-            } else {
-                result.append(ch)
-            }
-        }
-        return result
     }
 }
 
