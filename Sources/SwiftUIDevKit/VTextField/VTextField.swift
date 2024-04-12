@@ -144,9 +144,9 @@ public struct VTextField: View {
                         if text != s && (maxCount != 0) {
                             text = s
                         }
-                        if let format{
-                            text = maskInput(mask: format, input: newText)
-                        }
+                    }
+                    if let format{
+                        text = maskInput(mask: format, input: newText)
                     }
                 })
         }
