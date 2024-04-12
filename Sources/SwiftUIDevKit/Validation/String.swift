@@ -10,29 +10,29 @@ import Foundation
 // MARK: - String Validation 
 extension String {
     ///check empty
-    func isEmptyString() -> Bool {
+    public func isEmptyString() -> Bool {
         return self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     ///email
-    func isValidEmailAddress() -> Bool {
+    public func isValidEmailAddress() -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         return predicate.evaluate(with: self)
     }
     ///password
-    func isValidPassword() -> Bool {
+    public func isValidPassword() -> Bool {
         let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@@$!%*?&<>-^*?_()+#])[A-Za-z\\d@@$!%*?&<>-^*?_()+#]{8,12}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return predicate.evaluate(with: self)
     }
     ///phone
-    func isValidPhone() -> Bool {
+    public func isValidPhone() -> Bool {
         let phoneRegex = #"^(\([1-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$"#
         let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         return predicate.evaluate(with: self)
     }
     ///zip code
-    func isValidZipcode_US() -> Bool {
+    public func isValidZipcode_US() -> Bool {
         let zipCodeRegex = "^[0-9]{5}(-[0-9]{4})?$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", zipCodeRegex)
         return predicate.evaluate(with: self)
