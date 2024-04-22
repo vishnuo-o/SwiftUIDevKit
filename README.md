@@ -99,28 +99,27 @@ Make a uiModel with following params.
 ```
 
 ## To Customise the textfield for any style.
-![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
+![VTextField_Customise](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/fda9ce69-9ab0-4123-bd72-ae78e37fdd62)
 
 Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
 
 ```
-    @State var email: String = ""
-    let textFieldUIModel = VTextFieldUIModel(font: .custom("SF Mono", size: 16),
-                                             backgroundColor: .green.opacity(0.30),
-                                             floatBackgroundColor: .green.opacity(0.30),
-                                             selectedColor: .green,
+    @State var username: String = ""
+    let textFieldUIModel = VTextFieldUIModel(font: .custom("Menlo", size: 14),
+                                             backgroundColor: .green.opacity(0.25),
+                                             floatBackgroundColor: .green.opacity(0.75),
+                                             selectedColor: .white,
                                              borderWidth: 0,
+                                             borderType: .outline,
                                              headerFont: .title,
                                              footerForgroundColor: .yellow)
     
     var body: some View {
         VStack {
-            VTextField(uiModel: textFieldUIModel,
-                       "Email",
-                       text: $email,
-                       header: "Login",
-                       icon: (Image(systemName: "envelope.fill"), .trailing, nil),
-                       footer: "Your are not registered with us")
+             VTextField(uiModel: textFieldUIModel,
+                        "User Name",
+                        text: $username,
+                        mandatory: true)
         }
         .padding()
     }
