@@ -88,6 +88,16 @@ Set the 'maxCount' param to required maximum count.
     VTextField("Username", text: $username, maxCount: 6)
 ```
 
+#### 7. To change border type.
+
+![VTextField_BorderType](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/7b8c853e-2bd3-4a81-aa1d-ed7e9f608dfb)
+
+Make a uiModel with following params.
+
+```
+    let textFieldUIModel = VTextFieldUIModel(borderType: .underline, placeholderLeadingSpacing: -6)
+```
+
 ## To Customise the textfield for any style.
 ![VTextField_Customise](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/3041d21a-eb86-4e9c-87c8-60df3acb0388)
 
