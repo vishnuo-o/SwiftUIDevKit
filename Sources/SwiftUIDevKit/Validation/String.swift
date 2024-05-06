@@ -26,7 +26,7 @@ extension String {
         return predicate.evaluate(with: self)
     }
     ///phone
-    public func isValidPhone() -> Bool {
+    public func isValidPhone_US() -> Bool {
         let phoneRegex = #"^(\([1-9]{3}\) |[0-9]{3}-)[0-9]{3}-[0-9]{4}$"#
         let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         return predicate.evaluate(with: self)

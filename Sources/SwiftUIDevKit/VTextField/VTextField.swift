@@ -5,6 +5,7 @@
 //
 
 import SwiftUI
+
 // MARK: - Custom TextField
 @available(iOS 13.0, *)
 public struct VTextField: View {
@@ -14,15 +15,15 @@ public struct VTextField: View {
     @State private var isVisible: Bool = false
     
     ///UI model
-    let uiModel: VTextFieldUIModel
+    private let uiModel: VTextFieldUIModel
     
-    private var mandatory: Bool
-    private var secureEntry: Bool
-    private var header: String?
-    private var icon: (Image, Alignment, (() -> Void)?)?
-    private var footer: String?
-    private var maxCount: Int?
-    private var format: String?
+    private let mandatory: Bool
+    private let secureEntry: Bool
+    private let header: String?
+    private let icon: (Image, Alignment, (() -> Void)?)?
+    private let footer: String?
+    private let maxCount: Int?
+    private let format: String?
     
     public init(
         uiModel: VTextFieldUIModel = VTextFieldUIModel(),
@@ -48,14 +49,15 @@ public struct VTextField: View {
         self.format = format
     }
     
-    public var body: some View {
+    public var body: some View{
         TextFieldView()
             .autocorrectionDisabled()
+            .keyboardType(.asciiCapable) /// This avoids suggestions bar on the keyboard.
             .foregroundColor(uiModel.foregroundColor)
             .font(uiModel.font)
             .padding(8)
             .frame(height: uiModel.height)
-            .padding(.leading, 4)
+            .padding(.leading, uiModel.placeholderLeadingSpacing)
             .background(
                 ///Float Title
                 HStack(spacing: 0){
@@ -66,16 +68,20 @@ public struct VTextField: View {
                             .foregroundColor(.red)
                     }
                 }
-                .font(isFocused || !text.isEmpty ? uiModel.floatFont : uiModel.placeholderFont)
-                .background(isFocused || !text.isEmpty ? uiModel.floatBackgroundColor : .clear)
-                .cornerRadius(uiModel.cornerRadius/2)
-                .offset(x: 8, y: isFocused || !text.isEmpty ? -uiModel.height/2 : 0), alignment: .leading
+                    .font(isFocused || !text.isEmpty ? uiModel.floatFont : uiModel.placeholderFont)
+                    .background(isFocused || !text.isEmpty ? uiModel.floatBackgroundColor : .clear)
+                    .cornerRadius(uiModel.cornerRadius)
+                    .padding(.leading, uiModel.placeholderLeadingSpacing)
+                    .padding(.leading, (isFocused || !text.isEmpty) && icon?.1 == .leading ? -uiModel.iconWidth+uiModel.floatLeadingSpacing-6 : 0)
+                    .offset(x: 5, y: isFocused || !text.isEmpty ? -uiModel.height/2 : 0)
+                , alignment: .leading
             )
-            .padding(icon?.1 == .leading ? .leading : .trailing,(icon == nil ? 0 : uiModel.iconWidth))
+            .padding(icon?.1 == .leading ? .leading : .trailing,(icon == nil ? 0 : uiModel.iconWidth)) //icon
+            .padding(.trailing, uiModel.showClearButton ? uiModel.clearButtonWidth + 3 : 0)
             .padding(.trailing, secureEntry ? uiModel.iconWidth : 0)
             .overlay(
                 ZStack{
-                    ///SecureField
+                    ///Secure Field
                     if secureEntry{
                         HStack{
                             Spacer()
@@ -111,27 +117,60 @@ public struct VTextField: View {
                                 icon?.1 == .leading ? Spacer() : nil
                             }
                         }
+                        
+                        ///Clear Button
+                        if uiModel.showClearButton && !text.isEmpty && isFocused{
+                            HStack{
+                                Spacer()
+                                Button{
+                                    text = ""
+                                }label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: uiModel.clearButtonWidth)
+                                        .padding(.horizontal, 8)
+                                        .foregroundColor(Color(.placeholderText))
+                                }
+                                .padding(.trailing, icon?.1 == .trailing ? 30 : 0)
+                            }
+                        }
+                        
                     }
                 }
             )
             .background(
-                ///Border
-                RoundedRectangle(cornerRadius: uiModel.cornerRadius)
-                    .fill(uiModel.backgroundColor)
-                    .background(
+                /// Border
+                Group {
+                    switch uiModel.borderType {
+                    case .outline:
                         RoundedRectangle(cornerRadius: uiModel.cornerRadius)
-                            .stroke(isFocused ? uiModel.selectedColor : uiModel.unselectedColor, lineWidth: uiModel.borderWidth * (text.isEmpty ? 1 : 2))
-                    )
+                            .fill(isFocused ? uiModel.selectedBackgroundColor : uiModel.backgroundColor)
+                            .background(
+                                RoundedRectangle(cornerRadius: uiModel.cornerRadius)
+                                    .stroke(isFocused ? uiModel.selectedColor : uiModel.unselectedColor, lineWidth: uiModel.borderWidth * (text.isEmpty ? 1 : 2))
+                            )
+                    case .underline:
+                        VStack(spacing: 0){
+                            Spacer()
+                            Rectangle()
+                                .frame(height: uiModel.borderWidth * (text.isEmpty ? 0.5 : 1.0))
+                                .foregroundColor(isFocused ? uiModel.selectedColor : uiModel.unselectedColor)
+                                .alignmentGuide(.bottom) { $0[VerticalAlignment.bottom] }
+                        }
+                    }
+                }
             )
         ///Header
             .setHeader(text: header, font: uiModel.headerFont, textColor: uiModel.headerForgroundColor, spacing: uiModel.headerSpacing)
         ///Footer
             .setFooter(text: footer, font: uiModel.footerFont, textColor: uiModel.footerForgroundColor, spacing: uiModel.footerSpacing)
-            .padding(.top, 8)
+            .padding(.top, 8)        
     }
     
     ///View returns TextField
     private func TextFieldView() -> AnyView{
+        //TO DO: - Constraint Issue
         if secureEntry && !isVisible{
             return AnyView(SecureField("", text: $text))
         }else{
@@ -139,28 +178,68 @@ public struct VTextField: View {
                 self.isFocused = editing
             })
                 .onChange(of: text){ newText in
+                    ///Limit text entry
                     if let maxCount{
                         let s = String(newText.prefix(maxCount))
                         if text != s && (maxCount != 0) {
                             text = s
                         }
                     }
+                    ///Formatter
                     if let format{
                         text = maskInput(mask: format, input: newText)
                     }
-                })
+                }
+            )
         }
+    }
+    
+    // TO DO:- 
+    ///Info View : Pass symbols like  ✔ ,  ✘ ,  𝐢
+    private func InfoView(symbol: String = "!", foregroundColor: Color = .white, backgroundColor: Color = .red) -> AnyView{
+        return AnyView(
+            ZStack{
+                Circle()
+                    .frame(width: 16)
+                    .foregroundColor(backgroundColor)
+                Text(symbol)
+                    .font(uiModel.footerFont)
+                    .foregroundColor(foregroundColor)
+                    .clipped()
+            })
+    }
+    
+    private func getDot(n: Int) -> String{
+        var x = ""
+        for _ in 0..<n{
+            x.append("•")
+        }
+        return x
     }
 }
 
+///Border fill type
+public enum BorderType: String {
+    case outline
+    case underline
+}
+
+
+
+
+
 //MARK: - Preview
 struct CustomTextField_Previews: PreviewProvider {
-    @State static var email = "abc"
-    @State static var pass = "123"
-    @State static var phone = ""
+    @State static var email = "abc@abc.com"
+    @State static var pass = "xyz"
+    @State static var phone = "123"
     static var previews: some View {
         ///Customize here
-        let uiModel = VTextFieldUIModel(selectedColor: Color(red: 66/255, green: 133/255, blue: 244/255), headerFont: .title2)
+        let uiModel = VTextFieldUIModel(
+            selectedColor: Color(66, 133, 244),
+            borderType: .underline,
+            headerFont: .title2
+        )
         
         ///Email Password Preview
         VStack{
@@ -169,8 +248,8 @@ struct CustomTextField_Previews: PreviewProvider {
                        text: $email,
                        mandatory: true,
                        header: "Login",
-                       icon: (Image(systemName: "envelope.fill"), .trailing, nil),
-                       footer: ""
+                       icon: (Image(systemName: "envelope.fill"), .leading, nil),
+                       footer: nil
             )
             VTextField("Password", text: $pass, secureEntry: true)
             VTextField("Phone", text: $phone, maxCount: 1, format: "(XXX) XXX-XXXX")

@@ -22,14 +22,22 @@ extension View {
     }
     
     // MARK: - Footer
-    public func setFooter(text: String?, font: Font, textColor: Color, spacing: CGFloat) -> some View {
+    public func setFooter(text: String?, font: Font, textColor: Color, spacing: CGFloat, info: AnyView? = nil) -> some View {
         VStack(alignment: .leading, spacing: spacing){
             self
-            if let text{
-                Text(text)
-                    .font(font)
-                    .foregroundColor(textColor)
+            HStack(spacing: 4){
+                if let text{
+                    info
+                    Text(text)
+                        .font(font)
+                        .foregroundColor(textColor)
+                }
             }
         }
+    }
+    
+    // MARK: - Custom View
+    public func presentView<PopupView>(uiModel: VPopupUIModel, isPresented: Bool, popupView: @escaping() -> PopupView) -> some View where PopupView: View {
+        return VPopup(uiModel: uiModel, isPresented: isPresented, content: { self }, view: popupView)
     }
 }

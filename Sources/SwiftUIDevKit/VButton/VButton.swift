@@ -7,25 +7,125 @@
 
 import SwiftUI
 
-// MARK: - Button Style
-public struct CustomButtonStyle: ButtonStyle {
-    public func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .frame(maxWidth: .infinity)
-            .frame(height: 50)
-            .foregroundStyle(.white)
-            .bold()
-            .font(.title3)
-            .background(Color(red: 66/255, green: 133/255, blue: 244/255))
-            .cornerRadius(8)
-            .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0), value: true) // Spring animation
-            .padding(.top, 10)
+// MARK: - VButton
+public struct VButton: View {
+    var uiModel: VButtonUIModel = VButtonUIModel()
+    let title: String
+    let onClick: () -> Void
+    
+    public var body: some View {
+        switch uiModel.fill {
+        case .streched:
+            Button(action: onClick) {
+                Text(title)
+            }
+            .buttonStyle(ButtonStyle_Streched(uiModel: uiModel))
+        case .proportional:
+            Button(action: onClick) {
+                Text(title)
+            }
+            .buttonStyle(ButtonStyle_Proportional(uiModel: uiModel))
+        }
     }
 }
 
-/// Primary Button Style Streched
-extension ButtonStyle where Self == CustomButtonStyle {
-    public static var primary: CustomButtonStyle {
-        CustomButtonStyle()
+///Background fill type
+public enum FillType: String {
+    case streched
+    case proportional
+}
+
+///Streched Style
+public struct ButtonStyle_Streched: ButtonStyle {
+    var uiModel: VButtonUIModel
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: uiModel.width)
+            .frame(height: uiModel.height)
+            .foregroundStyle(uiModel.foregroundColor)
+            .font(uiModel.font)
+            .padding(uiModel.icon?.1 == .leading ? .leading : .trailing, (uiModel.icon?.0 == nil || uiModel.icon?.1 == .center ? 0 : uiModel.iconWidth))
+            .overlay{
+                if let image = uiModel.icon?.0{
+                    HStack{
+                        uiModel.icon?.1 == .trailing ? Spacer() : nil
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: uiModel.iconWidth, height: uiModel.iconHeight)
+                            .padding(.horizontal, uiModel.iconHPadding)
+                            .foregroundColor(uiModel.iconColor)
+                        uiModel.icon?.1 == .leading ? Spacer() : nil
+                    }
+                }
+            }
+            .padding(uiModel.icon?.1 == .trailing ? .leading : .trailing, (uiModel.icon?.0 == nil || uiModel.icon?.1 == .center ? 0 : uiModel.iconWidth))
+            .background(uiModel.backgroundColor)
+            .cornerRadius(uiModel.cornerRadius)
+            .scaleEffect(configuration.isPressed ? uiModel.animation ? 0.95 : 1.0 : 1.0)
+            .padding(uiModel.topPadding)
     }
 }
+
+///Proportional to Title
+public struct ButtonStyle_Proportional: ButtonStyle {
+    var uiModel: VButtonUIModel
+    public func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(height: uiModel.height)
+            .foregroundStyle(uiModel.foregroundColor)
+            .font(uiModel.font)
+            .padding(uiModel.padding)
+            .padding(uiModel.icon?.1 == .leading ? .leading : .trailing, (uiModel.icon?.0 == nil ? 0 : uiModel.iconWidth*(uiModel.icon?.1 == .center ? 1 : 1.35)))
+            .overlay{
+                if let image = uiModel.icon?.0{
+                    HStack{
+                        uiModel.icon?.1 == .trailing ? Spacer() : nil
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: uiModel.iconWidth, height: uiModel.iconHeight)
+                            .padding(.horizontal, uiModel.iconHPadding)
+                            .foregroundColor(uiModel.iconColor)
+                        uiModel.icon?.1 == .leading ? Spacer() : nil
+                    }
+                }
+            }
+            .background(uiModel.backgroundColor)
+            .cornerRadius(uiModel.cornerRadius)
+            .scaleEffect(configuration.isPressed ? uiModel.animation ? 0.95 : 1.0 : 1.0)
+            .padding(uiModel.topPadding)
+    }
+}
+
+//Streched to device Width
+#Preview {
+    VButton(uiModel: VButtonUIModel(font: .custom("Avenir Heavy", size: 20),
+                                    backgroundColor: .green,
+                                    icon: (Image(systemName: "chevron.down"), .trailing),
+                                    iconColor: .white
+                                   ), title: "Button") {
+        print("pressed..")
+    }
+}
+
+//Proportional to title
+#Preview {
+    VButton(uiModel: VButtonUIModel(font: .custom("Avenir Heavy", size: 20),
+                                    backgroundColor: .green,
+                                    fill: .proportional,
+                                    icon: (Image(systemName: "plus.circle.fill"), .leading),
+                                    iconColor: .yellow,
+                                    iconWidth: 24,
+                                    iconHeight: 24
+                                   ), title: "Add") {
+        print("pressed..")
+    }
+}
+
+///Button Style Extension Reference
+//extension ButtonStyle where Self == ButtonStyle_Streched {
+//    public static var primary: ButtonStyle_Streched {
+//        ButtonStyle_Streched(uiModel: VButtonUIModel())
+//    }
+//}
