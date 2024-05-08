@@ -165,9 +165,12 @@ You can explore the properties.
 
 ## <a name="vpopup"></a>VPopup
 
-![VPopup](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/476b0344-8cab-4da0-8912-9bd67c6596b6)
+You can present any View on top of the screen using VPopup
 
-```
+<div style="display: flex-start; align-items: center;">
+<img src="https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/476b0344-8cab-4da0-8912-9bd67c6596b6" width="30%">
+<pre style="width: 50";><code>
+
     @State var showPopup = false
     
     let primaryPopup = VPopupUIModel(backgroundColor: .pink, // popup background
@@ -187,7 +190,7 @@ You can explore the properties.
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .presentView(uiModel: primaryPopup,
+        .presentPopup(uiModel: primaryPopup,
                      isPresented: showPopup,
                      popupView: { forgetPasswordView })
     }
@@ -203,5 +206,5 @@ You can explore the properties.
         }
         .padding()
     }
-
-```
+</code></pre>
+</div>
