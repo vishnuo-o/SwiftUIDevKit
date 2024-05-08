@@ -9,36 +9,75 @@ import SwiftUI
 
 //MARK: - UIModel for Customization
 public struct VButtonUIModel {
-    public var  font: Font = .custom("Avenir Bold", size: 16)
-    public var  width: CGFloat = .infinity
-    public var  height: CGFloat = 50
-    public var  foregroundColor: Color = .white
-    public var  backgroundColor: Color = Color(60, 120, 240)
-    
-    //selection
-    public var  selectedColor: Color = .white
-    public var  unselectedColor: Color = .gray
-    
-    //border
-    public var  cornerRadius: CGFloat = 4.0
-    public var  borderWidth: CGFloat = 1.25
-    
-    //animation
-    public var  animation: Bool = true
+    var font: Font
+    var foregroundColor: Color
+    var backgroundColor: Color
     
     //fill type
-    public var  fill: FillType = .streched
+    var fill: FillType
+    var width: CGFloat
+    var height: CGFloat
+    
+    //selection
+    var selectedColor: Color
+    var unselectedColor: Color
+    
+    //border
+    var cornerRadius: CGFloat
+    var borderWidth: CGFloat
+    
+    //animation
+    var animation: Bool
     
     //icon
-    public var  icon:(Image, Alignment)? = nil
-    public var  iconColor: Color = .white
-    public var  iconWidth: CGFloat = 18
-    public var  iconHeight: CGFloat = 18
-    public var  iconHPadding: CGFloat = 12
+    var icon:(Image, Alignment)?
+    var iconColor: Color
+    var iconWidth: CGFloat
+    var iconHeight: CGFloat
+    var iconHPadding: CGFloat
     
     //paddding
-    public var  padding: EdgeInsets = .init(top: 0, leading: 12, bottom: 0, trailing: 12)
-    public var  topPadding: Edge.Set = .top
+    var padding: EdgeInsets
+    var topPadding: Edge.Set
+    
+    public init(font: Font = .custom("Avenir Bold", size: 16),
+                foregroundColor: Color = .white,
+                backgroundColor: Color = Color(60, 120, 240),
+                fill: FillType = .streched,
+                width: CGFloat = .infinity,
+                height: CGFloat = 50,
+                selectedColor: Color = .white,
+                unselectedColor: Color = .gray,
+                cornerRadius: CGFloat = 4.0,
+                borderWidth: CGFloat = 1.25,
+                animation: Bool = false,
+                icon: (Image, Alignment)? = nil,
+                iconColor: Color = .white,
+                iconWidth: CGFloat = 18,
+                iconHeight: CGFloat = 18,
+                iconHPadding: CGFloat = 12,
+                padding: EdgeInsets = .init(top: 0, leading: 12, bottom: 0, trailing: 12),
+                topPadding: Edge.Set = .top)
+    {
+        self.font = font
+        self.foregroundColor = foregroundColor
+        self.backgroundColor = backgroundColor
+        self.fill = fill
+        self.width = width
+        self.height = height
+        self.selectedColor = selectedColor
+        self.unselectedColor = unselectedColor
+        self.cornerRadius = cornerRadius
+        self.borderWidth = borderWidth
+        self.animation = animation
+        self.icon = icon
+        self.iconColor = iconColor
+        self.iconWidth = iconWidth
+        self.iconHeight = iconHeight
+        self.iconHPadding = iconHPadding
+        self.padding = padding
+        self.topPadding = topPadding
+    }
 }
 
 
