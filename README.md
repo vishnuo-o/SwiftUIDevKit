@@ -8,7 +8,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
 ***
 
-### VTextField
+## VTextField
 ![VTextField](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/d5e18e88-efb6-46b7-8590-7017f6368593)
 
 #### Usage:
@@ -99,7 +99,7 @@ Make a uiModel with following params.
 ```
 
 ## To Customise the textfield for any style.
-![VTextField_Customise](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/fda9ce69-9ab0-4123-bd72-ae78e37fdd62)
+![VTextField_Custom](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/fda9ce69-9ab0-4123-bd72-ae78e37fdd62)
 
 Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
 
@@ -126,3 +126,29 @@ Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
     }
 ```
 
+## VButton
+
+Similer to TextField, you can customize the uiModel as required.
+You can explore the properties.
+![VButton](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/4219edf2-f4f9-4030-863e-621ebd32da49)
+
+```
+    let primaryButton = VButtonUIModel(font: .custom("Avenir Heavy", size: 20),
+                                       backgroundColor: .green,
+                                       icon: (Image(systemName: "arrowshape.right.fill"), .trailing))
+    
+    let secondaryButton = VButtonUIModel(font: .custom("Avenir Heavy", size: 20),
+                                         backgroundColor: .orange,
+                                         fill: .proportional,
+                                         height: 36,
+                                         cornerRadius: 5.0,
+                                         icon: (Image(systemName: "plus.circle.fill"), .leading))
+
+    VButton(uiModel: primaryButton, title: "Next") {
+        // action
+    }
+    
+    VButton(uiModel: secondaryButton, title: "Add") {
+        // action
+    }
+```
