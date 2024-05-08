@@ -1,9 +1,9 @@
 # SwiftUIDevKit
 A Quick Development Kit for iOS Applications. 
 
-1. ![VTextField](https://github.com/vishnuo-o/SwiftUIDevKit/edit/main/README.md#vtextfield)
+1.[VTextField](#vtextfield)
 
-2. ![VButton](https://github.com/vishnuo-o/SwiftUIDevKit/edit/main/README.md#vbutton)
+2.[VButton](#vbutton)
 
 ## Installation
 Go to Xcode, 
@@ -12,7 +12,7 @@ File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
 ***
 
-## VTextField
+### <a name="vtextfield"></a>VTextField
 ![VTextField](https://github.com/i-steve/SwiftUIDevKit/assets/81131990/d5e18e88-efb6-46b7-8590-7017f6368593)
 
 #### Usage:
@@ -102,7 +102,7 @@ Make a uiModel with following params.
     let textFieldUIModel = VTextFieldUIModel(borderType: .underline, placeholderLeadingSpacing: -6)
 ```
 
-## To Customise the textfield for any style.
+### To Customise the textfield for any style.
 ![VTextField_Custom](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/fda9ce69-9ab0-4123-bd72-ae78e37fdd62)
 
 Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
@@ -117,7 +117,7 @@ Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
                                              borderWidth: 0,
                                              borderType: .outline,
                                              headerFont: .title,
-                                             footerForgroundColor: .orange)
+                                             footerForgroundColor: .red)
     
     var body: some View {
         VStack {
@@ -130,7 +130,9 @@ Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
     }
 ```
 
-## VButton
+***
+
+### <a name="vbutton"></a>VButton
 
 Similer to TextField, you can customize the uiModel as required.
 You can explore the properties.
