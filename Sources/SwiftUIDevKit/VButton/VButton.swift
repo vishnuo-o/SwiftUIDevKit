@@ -32,7 +32,7 @@ public struct VButton: View {
 
 ///Streched Style
 public struct ButtonStyle_Streched: ButtonStyle {
-    let uiModel: VButtonUIModel
+    var uiModel: VButtonUIModel
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(maxWidth: uiModel.width)
@@ -64,7 +64,7 @@ public struct ButtonStyle_Streched: ButtonStyle {
 
 ///Proportional to Title
 public struct ButtonStyle_Proportional: ButtonStyle {
-    let uiModel: VButtonUIModel
+    var uiModel: VButtonUIModel
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(height: uiModel.height)
