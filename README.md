@@ -106,13 +106,14 @@ Create an object of VTextFieldUIModel and pass the object to 'uiModel' param.
 ```
     @State var username: String = ""
     let textFieldUIModel = VTextFieldUIModel(font: .custom("Menlo", size: 14),
-                                             backgroundColor: .green.opacity(0.25),
-                                             floatBackgroundColor: .green.opacity(0.75),
-                                             selectedColor: .white,
+                                             backgroundColor: .gray.opacity(0.25),
+                                             selectedBackgroundColor: .green.opacity(0.25),
+                                             floatBackgroundColor: Color(200,240,215),
+                                             selectedColor: .green,
                                              borderWidth: 0,
                                              borderType: .outline,
                                              headerFont: .title,
-                                             footerForgroundColor: .yellow)
+                                             footerForgroundColor: .orange)
     
     var body: some View {
         VStack {
