@@ -8,14 +8,14 @@
 import SwiftUI
 
 // MARK: - VPopup
-public struct VPopup<Content, PopupView>: View where Content: View, PopupView: View {
+struct VPopup<Content, PopupView>: View where Content: View, PopupView: View {
     ///UI model
     private var uiModel: VPopupUIModel
-    private var isPresented: Bool
+    let isPresented: Bool
     @ViewBuilder let content: () -> Content
     @ViewBuilder let view: () -> PopupView
 
-    public var body: some View {
+    var body: some View {
         ZStack {
             content()
                 .overlay(
