@@ -9,7 +9,8 @@ import SwiftUI
 
 // MARK: - VPopup
 struct VPopup<Content, PopupView>: View where Content: View, PopupView: View {
-    var uiModel: VPopupUIModel
+    ///UI model
+    private var uiModel: VPopupUIModel
     var isPresented: Bool
     @ViewBuilder let content: () -> Content
     @ViewBuilder let view: () -> PopupView
