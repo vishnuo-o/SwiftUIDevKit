@@ -2,7 +2,7 @@
 //  VPopup.swift
 //  VKitDemo
 //
-//  Created by STS649-VISHNU S on 4/23/24.
+//  Created by Vishnu Priyan on 4/23/24.
 //
 
 import SwiftUI
