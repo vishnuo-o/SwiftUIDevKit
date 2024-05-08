@@ -1,5 +1,5 @@
 # SwiftUIDevKit
-A Quick Development Kit for iOS Applications. 
+A Quick Development Kit for iOS Applications using Swift UI. By Integrating this you could make development much faster.
 
 [VTextField](#vtextfield)
 
