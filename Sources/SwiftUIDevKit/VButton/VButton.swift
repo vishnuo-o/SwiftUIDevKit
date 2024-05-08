@@ -64,7 +64,7 @@ public struct ButtonStyle_Streched: ButtonStyle {
             .background(uiModel.backgroundColor)
             .cornerRadius(uiModel.cornerRadius)
             .scaleEffect(configuration.isPressed ? uiModel.animation ? 0.95 : 1.0 : 1.0)
-            .padding(uiModel.topPadding)
+            .padding(.top, uiModel.topPadding)
     }
 }
 
@@ -95,7 +95,7 @@ public struct ButtonStyle_Proportional: ButtonStyle {
             .background(uiModel.backgroundColor)
             .cornerRadius(uiModel.cornerRadius)
             .scaleEffect(configuration.isPressed ? uiModel.animation ? 0.95 : 1.0 : 1.0)
-            .padding(uiModel.topPadding)
+            .padding(.top, uiModel.topPadding)
     }
 }
 

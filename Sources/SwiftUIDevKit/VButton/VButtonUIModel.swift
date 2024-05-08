@@ -38,7 +38,7 @@ public struct VButtonUIModel {
     
     //paddding
     var padding: EdgeInsets
-    var topPadding: Edge.Set
+    var topPadding: CGFloat
     
     public init(font: Font = .custom("Avenir Bold", size: 16),
                 foregroundColor: Color = .white,
@@ -57,7 +57,7 @@ public struct VButtonUIModel {
                 iconHeight: CGFloat = 18,
                 iconHPadding: CGFloat = 12,
                 padding: EdgeInsets = .init(top: 0, leading: 12, bottom: 0, trailing: 12),
-                topPadding: Edge.Set = .top)
+                topPadding: CGFloat = 12)
     {
         self.font = font
         self.foregroundColor = foregroundColor
