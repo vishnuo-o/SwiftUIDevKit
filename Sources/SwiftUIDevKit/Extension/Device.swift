@@ -10,14 +10,14 @@ import SwiftUI
 // MARK: - Device Details
 extension UIDevice{
     ///Decvice Details
-    static let name = UIDevice.current.name
-    static let model = UIDevice.current.model
-    static let version = UIDevice.current.systemVersion
+    public static let name = UIDevice.current.name
+    public static let model = UIDevice.current.model
+    public static let version = UIDevice.current.systemVersion
     ///Device Type
-    static var is_iPhone: Bool { return UIDevice.current.userInterfaceIdiom == .phone }
-    static var is_iPad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
+    public static var is_iPhone: Bool { return UIDevice.current.userInterfaceIdiom == .phone }
+    public static var is_iPad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
     ///Device frame
-    static var height: CGFloat { return UIScreen.main.bounds.height }
-    static var width: CGFloat { return UIScreen.main.bounds.width }
+    public static var height: CGFloat { return UIScreen.main.bounds.height }
+    public static var width: CGFloat { return UIScreen.main.bounds.width }
 }
 
