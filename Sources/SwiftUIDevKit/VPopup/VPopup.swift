@@ -23,15 +23,15 @@ struct VPopup<Content, PopupView>: View where Content: View, PopupView: View {
                         if isPresented {
                             uiModel.shadowColor.ignoresSafeArea()
                             view()
-                                .padding(uiModel.padding)
                                 .background(uiModel.backgroundColor)
                                 .cornerRadius(uiModel.cornerRadius)
                                 .overlay(RoundedRectangle(cornerRadius: uiModel.cornerRadius)
                                     .stroke(uiModel.borderColor, lineWidth: uiModel.borderWidth))
                                 .transition(uiModel.transition)
                                 .shadow(color: uiModel.shadowColor, radius: uiModel.shadowRadius)
+                                .padding(uiModel.padding)
                         }
-                    }.ignoresSafeArea()
+                    }
                 )
         }
         .animation(uiModel.animation, value: isPresented)

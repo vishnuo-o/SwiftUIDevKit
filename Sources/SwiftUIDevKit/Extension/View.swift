@@ -37,7 +37,7 @@ extension View {
     }
     
     // MARK: - Custom View
-    public func presentView<PopupView>(uiModel: VPopupUIModel, isPresented: Bool, popupView: @escaping() -> PopupView) -> some View where PopupView: View {
+    public func presentPopup<PopupView>(uiModel: VPopupUIModel, isPresented: Bool, popupView: @escaping() -> PopupView) -> some View where PopupView: View {
         return VPopup(uiModel: uiModel, isPresented: isPresented, content: { self }, view: popupView)
     }
 }
