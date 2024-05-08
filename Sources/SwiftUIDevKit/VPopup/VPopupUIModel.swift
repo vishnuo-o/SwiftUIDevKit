@@ -10,23 +10,32 @@ import SwiftUI
 //MARK: - UIModel for Customization
 public struct VPopupUIModel {
     //colors
-    var backgroundColor: Color = Color(.systemBackground)
-    var shadowColor: Color = Color(.placeholderText)
-    var shadowRadius: CGFloat = 1.0
+    var backgroundColor: Color
+    var shadowColor: Color
+    var shadowRadius: CGFloat
     
     //border
-    var cornerRadius: CGFloat = 8.0
-    var borderWidth: CGFloat = 0.0
-    var borderColor: Color = .clear
+    var cornerRadius: CGFloat
+    var borderWidth: CGFloat
+    var borderColor: Color
     
     //animation
-    var animation: Animation = .default
-    var transition: AnyTransition = .scale
+    var animation: Animation
+    var transition: AnyTransition
     
     //padding
-    var padding: EdgeInsets = .init(top: 12, leading: 12, bottom: 12, trailing: 12)
+    var padding: EdgeInsets
     
-    public init(backgroundColor: Color, shadowColor: Color, shadowRadius: CGFloat, cornerRadius: CGFloat, borderWidth: CGFloat, borderColor: Color, animation: Animation, transition: AnyTransition, padding: EdgeInsets) {
+    public init(backgroundColor: Color = Color(.systemBackground),
+                shadowColor: Color = Color(.placeholderText),
+                shadowRadius: CGFloat = 1.0,
+                cornerRadius: CGFloat = 8.0,
+                borderWidth: CGFloat = 0.0,
+                borderColor: Color = .clear,
+                animation: Animation = .default,
+                transition: AnyTransition = .scale,
+                padding: EdgeInsets = .init(top: 12, leading: 12, bottom: 12, trailing: 12))
+    {
         self.backgroundColor = backgroundColor
         self.shadowColor = shadowColor
         self.shadowRadius = shadowRadius
