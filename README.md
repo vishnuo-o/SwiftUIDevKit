@@ -1,9 +1,9 @@
 # SwiftUIDevKit
 A Quick Development Kit for iOS Applications. 
 
-1.[VTextField](#vtextfield)
+[1. VTextField](#vtextfield)
 
-2.[VButton](#vbutton)
+[2. VButton](#vbutton)
 
 ## Installation
 Go to Xcode, 
