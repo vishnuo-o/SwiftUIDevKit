@@ -10,7 +10,7 @@ import SwiftUI
 // MARK: - VButton
 public struct VButton: View {
     ///UI model
-    private var uiModel: VButtonUIModel = VButtonUIModel()
+    let uiModel: VButtonUIModel
     let title: String
     let onClick: () -> Void
     
@@ -30,16 +30,10 @@ public struct VButton: View {
     }
 }
 
-///Background fill type
-public enum FillType: String {
-    case streched
-    case proportional
-}
-
 ///Streched Style
-public struct ButtonStyle_Streched: ButtonStyle {
-    var uiModel: VButtonUIModel
-    public func makeBody(configuration: Configuration) -> some View {
+struct ButtonStyle_Streched: ButtonStyle {
+    let uiModel: VButtonUIModel
+    func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(maxWidth: uiModel.width)
             .frame(height: uiModel.height)
@@ -69,9 +63,9 @@ public struct ButtonStyle_Streched: ButtonStyle {
 }
 
 ///Proportional to Title
-public struct ButtonStyle_Proportional: ButtonStyle {
-    var uiModel: VButtonUIModel
-    public func makeBody(configuration: Configuration) -> some View {
+struct ButtonStyle_Proportional: ButtonStyle {
+    let uiModel: VButtonUIModel
+    func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(height: uiModel.height)
             .foregroundStyle(uiModel.foregroundColor)
@@ -99,7 +93,7 @@ public struct ButtonStyle_Proportional: ButtonStyle {
     }
 }
 
-//Streched to device Width
+// Streched to device Width
 #Preview {
     VButton(uiModel: VButtonUIModel(font: .custom("Avenir Heavy", size: 20),
                                     backgroundColor: .green,
@@ -110,7 +104,7 @@ public struct ButtonStyle_Proportional: ButtonStyle {
     }
 }
 
-//Proportional to title
+// Proportional to title
 #Preview {
     VButton(uiModel: VButtonUIModel(font: .custom("Avenir Heavy", size: 20),
                                     backgroundColor: .green,
@@ -124,9 +118,15 @@ public struct ButtonStyle_Proportional: ButtonStyle {
     }
 }
 
-///Button Style Extension Reference
-//extension ButtonStyle where Self == ButtonStyle_Streched {
-//    public static var primary: ButtonStyle_Streched {
-//        ButtonStyle_Streched(uiModel: VButtonUIModel())
-//    }
-//}
+// Button Style Extension Reference
+extension ButtonStyle where Self == ButtonStyle_Streched {
+    static var primary: ButtonStyle_Streched {
+        ButtonStyle_Streched(uiModel: VButtonUIModel())
+    }
+}
+
+extension ButtonStyle where Self == ButtonStyle_Proportional{
+    static var primary: ButtonStyle_Proportional {
+        ButtonStyle_Proportional(uiModel: VButtonUIModel())
+    }
+}

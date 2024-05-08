@@ -81,3 +81,8 @@ public struct VButtonUIModel {
 }
 
 
+// Background fill type
+public enum FillType: String {
+    case streched
+    case proportional
+}

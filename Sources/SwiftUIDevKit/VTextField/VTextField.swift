@@ -218,15 +218,6 @@ public struct VTextField: View {
     }
 }
 
-///Border fill type
-public enum BorderType: String {
-    case outline
-    case underline
-}
-
-
-
-
 
 //MARK: - Preview
 struct CustomTextField_Previews: PreviewProvider {

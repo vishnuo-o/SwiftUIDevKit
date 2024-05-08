@@ -107,3 +107,9 @@ public struct VTextFieldUIModel {
         self.placeholderLeadingSpacing = placeholderLeadingSpacing
     }
 }
+
+// Border fill type
+public enum BorderType: String {
+    case outline
+    case underline
+}
