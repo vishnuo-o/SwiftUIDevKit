@@ -10,9 +10,15 @@ import SwiftUI
 // MARK: - VButton
 public struct VButton: View {
     ///UI model
-    var uiModel: VButtonUIModel = VButtonUIModel()
-    var title: String
-    var onClick: () -> Void
+    private let uiModel: VButtonUIModel
+    private let title: String
+    private let onClick: () -> Void
+    
+    public init(uiModel: VButtonUIModel = VButtonUIModel(), title: String, onClick: @escaping () -> Void) {
+        self.uiModel = uiModel
+        self.title = title
+        self.onClick = onClick
+    }
     
     public var body: some View {
         switch uiModel.fill {
