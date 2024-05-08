@@ -11,8 +11,8 @@ import SwiftUI
 public struct VButton: View {
     ///UI model
     private var uiModel: VButtonUIModel = VButtonUIModel()
-    let title: String
-    let onClick: () -> Void
+    private let title: String
+    private let onClick: () -> Void
     
     public var body: some View {
         switch uiModel.fill {
