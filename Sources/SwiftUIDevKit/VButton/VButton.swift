@@ -124,9 +124,9 @@ public struct ButtonStyle_Proportional: ButtonStyle {
     }
 }
 
-// Button Style Extension Reference
+// Button Style Extension
 extension ButtonStyle where Self == ButtonStyle_Streched {
-    public static var streched: ButtonStyle_Streched {
-        ButtonStyle_Streched(uiModel: VButtonUIModel())
+    public static func custom(uiModel: VButtonUIModel = VButtonUIModel()) -> ButtonStyle_Streched {
+        ButtonStyle_Streched(uiModel: uiModel)
     }
 }
