@@ -10,9 +10,9 @@ import SwiftUI
 // MARK: - VButton
 public struct VButton: View {
     ///UI model
-    let uiModel: VButtonUIModel
-    let title: String
-    let onClick: () -> Void
+    var uiModel: VButtonUIModel
+    var title: String
+    var onClick: () -> Void
     
     public var body: some View {
         switch uiModel.fill {
@@ -120,13 +120,7 @@ public struct ButtonStyle_Proportional: ButtonStyle {
 
 // Button Style Extension Reference
 extension ButtonStyle where Self == ButtonStyle_Streched {
-    public static var primary: ButtonStyle_Streched {
+    public static var streched: ButtonStyle_Streched {
         ButtonStyle_Streched(uiModel: VButtonUIModel())
-    }
-}
-
-extension ButtonStyle where Self == ButtonStyle_Proportional{
-    public static var primary: ButtonStyle_Proportional {
-        ButtonStyle_Proportional(uiModel: VButtonUIModel())
     }
 }
