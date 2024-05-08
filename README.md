@@ -165,4 +165,43 @@ You can explore the properties.
 
 ## <a name="vpopup"></a>VPopup
 
-### Comming Soon...
+![VPopup](https://github.com/vishnuo-o/SwiftUIDevKit/assets/81131990/476b0344-8cab-4da0-8912-9bd67c6596b6)
+
+```
+    @State var showPopup = false
+    
+    let primaryPopup = VPopupUIModel(backgroundColor: .pink, // popup background
+                                     shadowColor: .gray, // blur color
+                                     padding: EdgeInsets(top: -(UIDevice.height/4), leading: 0, bottom: 0, trailing: 0)) // customise placement of popup
+    
+    let secondaryButton = VButtonUIModel(font: .custom("Avenir Heavy", size: 20),
+                                         backgroundColor: .orange,
+                                         fill: .proportional,
+                                         height: 36,
+                                         cornerRadius: 5.0)
+    
+    var body: some View {
+        VStack{
+            VButton(uiModel: secondaryButton, title: "Show Popup") {
+                showPopup = true
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .presentView(uiModel: primaryPopup,
+                     isPresented: showPopup,
+                     popupView: { forgetPasswordView })
+    }
+    
+    // Popup view Content or also you can pass as Struct
+    var forgetPasswordView: some View{
+        HStack(alignment: .top){
+            Text("You can customize this view as Required!")
+            Image(systemName: "xmark.circle.fill")
+                .onTapGesture {
+                    showPopup = false
+                }
+        }
+        .padding()
+    }
+
+```
