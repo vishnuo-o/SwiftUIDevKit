@@ -9,7 +9,8 @@ import SwiftUI
 
 // MARK: - VButton
 public struct VButton: View {
-    var uiModel: VButtonUIModel = VButtonUIModel()
+    ///UI model
+    private var uiModel: VButtonUIModel = VButtonUIModel()
     let title: String
     let onClick: () -> Void
     
