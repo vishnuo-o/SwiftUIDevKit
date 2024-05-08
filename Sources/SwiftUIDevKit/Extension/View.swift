@@ -10,8 +10,8 @@ import SwiftUI
 // MARK: - Extension for View
 extension View {
     // MARK: - Header
-    public func setHeader(text: String?, font: Font, textColor: Color, spacing: CGFloat) -> some View {
-        VStack(alignment: .leading, spacing: spacing){
+    public func setHeader(text: String?, font: Font, textColor: Color, alignment: HorizontalAlignment = .leading, spacing: CGFloat) -> some View {
+        VStack(alignment: alignment, spacing: spacing){
             if let text{
                 Text(text)
                     .font(font)
@@ -22,8 +22,8 @@ extension View {
     }
     
     // MARK: - Footer
-    public func setFooter(text: String?, font: Font, textColor: Color, spacing: CGFloat, info: AnyView? = nil) -> some View {
-        VStack(alignment: .leading, spacing: spacing){
+    public func setFooter(text: String?, font: Font, textColor: Color, alignment: HorizontalAlignment = .leading, spacing: CGFloat, info: AnyView? = nil) -> some View {
+        VStack(alignment: alignment, spacing: spacing){
             self
             HStack(spacing: 4){
                 if let text{
