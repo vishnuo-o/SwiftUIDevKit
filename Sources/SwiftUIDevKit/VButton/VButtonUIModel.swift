@@ -50,7 +50,7 @@ public struct VButtonUIModel {
                 unselectedColor: Color = .gray,
                 cornerRadius: CGFloat = 4.0,
                 borderWidth: CGFloat = 1.25,
-                animation: Bool = false,
+                animation: Bool = true,
                 icon: (Image, Alignment)? = nil,
                 iconColor: Color = .white,
                 iconWidth: CGFloat = 18,
