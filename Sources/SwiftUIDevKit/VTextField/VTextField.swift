@@ -70,7 +70,7 @@ public struct VTextField: View {
                 }
                     .font(isFocused || !text.isEmpty ? uiModel.floatFont : uiModel.placeholderFont)
                     .background(isFocused || !text.isEmpty ? uiModel.floatBackgroundColor : .clear)
-                    .cornerRadius(uiModel.cornerRadius)
+                    .cornerRadius(4.0)
                     .padding(.leading, uiModel.placeholderLeadingSpacing)
                     .padding(.leading, (isFocused || !text.isEmpty) && icon?.1 == .leading ? -uiModel.iconWidth+uiModel.floatLeadingSpacing-6 : 0)
                     .offset(x: 5, y: isFocused || !text.isEmpty ? -uiModel.height/2 : 0)
