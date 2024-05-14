@@ -43,7 +43,7 @@ public struct VButtonUIModel {
     public init(font: Font = .custom("Avenir Bold", size: 16),
                 foregroundColor: Color = .white,
                 backgroundColor: Color = Color(60, 120, 240),
-                fill: FillType = .streched,
+                fill: FillType = .proportional,
                 width: CGFloat = .infinity,
                 height: CGFloat = 50,
                 selectedColor: Color = .white,
