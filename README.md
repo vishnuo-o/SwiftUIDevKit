@@ -1,6 +1,7 @@
 # SwiftUIDevKit
 A Quick Development Kit for iOS Applications using Swift UI. By Integrating this you could make development much faster.
-If you are searching for MDC Textfield or Floating Textfield. Here the Solution.
+
+If you are searching for MDC Textfield or Floating Textfield in Swift UI. here the solution,
 
 [VTextField](#vtextfield)
 
