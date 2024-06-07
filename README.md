@@ -14,6 +14,8 @@ Go to Xcode,
 
 File > Add Package Dependencies then search the url & add SwiftUIDevKit package.
 
+I have demo project for usage with MVVM Model. Check here -> https://github.com/vishnuo-o/Demo-SwiftUIKit.git
+
 ***
 
 ## <a name="vtextfield"></a>VTextField
